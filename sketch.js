@@ -154,13 +154,22 @@ if(gameState === PLAY){
     backg.x = 500
   }
   
+  
    //jump when the space key is pressed
-  if(mousePressedOver(upButton) && spidey.y > 410){
+  if((keyWentDown("space") && spidey.y > 410) || (touches.length>0 && touches[touches.length-1].y <=200)){
+    spidey.velocityY = -24 ;
+    jumpSound.play();
+    jumpSound.setVolume(3);
+    //console.log(touches);
+   }
+
+   /* //jump when the space key is pressed
+   if(mousePressedOver(upButton) && spidey.y > 410){
     spidey.velocityY = -24 ;
     jumpSound.play();
     jumpSound.setVolume(3);
     
-   }
+   }*/
   if(spidey.y < 410) {
     spidey.changeAnimation("jump");
   
