@@ -173,7 +173,7 @@ if(gameState === PLAY){
   if(spidey.y < 410) {
     spidey.changeAnimation("jump");
   
-  } else if(mousePressedOver(downButton)){
+  } else if(touches.length>0 && touches[touches.length-1].y >200){
     spidey.changeAnimation("crouch");
     spidey.setCollider("rectangle", -5, 5, 300, 150);
 
@@ -235,7 +235,7 @@ if(gameState === END){
   gameOver.visible = true;
   spider.visible = true;
 
-  if(mousePressedOver(rest)) {
+  if(mousePressedOver(rest) || (touches.length>0 && touches[touches.length-1].y === 440 && touches[touches.length-1].x === 740)) {
     reset();
    }
 
